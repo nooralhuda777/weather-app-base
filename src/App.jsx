@@ -1,8 +1,7 @@
 import "./App.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-//const url =
-//  "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=1560edc39cf72fdf1b584e9593dcd968";
+
 function App() {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
@@ -13,7 +12,10 @@ function App() {
   //     .catch((data) => console.log(data));
   // });
   const handleSearch = () => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=1560edc39cf72fdf1b584e9593dcd968`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${
+      import.meta.env.VITE_API_KEY
+    }`;
+
     axios
       .get(url)
       .then((res) => setWeatherData(res.data))
